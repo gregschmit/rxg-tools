@@ -1,0 +1,39 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <title>Greg's Token Portal</title>
+  <meta name="viewport" content="initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width">
+
+  <!-- Link to this custom portal's favicon.ico -->
+  <%= portal_favicon_link_tag %>
+
+  <!-- Link to this custom portal's portal.css -->
+  <!-- Do not link other stylesheets here, instead add a require line to portal.css.scss.erb -->
+  <%= portal_stylesheet_link_tag %>
+
+  <!-- cross-site request forgery protection token for forms to use -->
+  <%= csrf_meta_tag %>
+</head>
+
+<body>
+  <div class="wrapper wrapper-head">
+    <div class="header wrapper-content">
+      <h1>Greg's Token Portal</h1>
+    </div>
+  </div>
+  <div class="wrapper">
+    <div class="main wrapper-content">
+      <%= yield %>
+    </div>
+  </div>
+
+  <div class="wrapper">
+    <hr>
+    <div class="footer wrapper-content">
+      Copyright 2017, Gregory N. Schmit, All right reserved
+    </div>
+  </div>
+</body>
+
+</html>

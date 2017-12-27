@@ -1,0 +1,23 @@
+<%= form_tag(:action => :show_tokens) do %>
+  <fieldset>
+    <legend>Token Generator</legend>
+    <div>
+      <%= text_field_tag 'qty', params[:qty], :placeholder => 'quantity of tokens...' %><span class="note">default: 1</span>
+    </div>
+    <div>
+      <%= text_field_tag 'usage_mins', params[:usage_mins], :placeholder => 'usage minutes...' %><span class="note">default: 120</span>
+    </div>
+    <div>
+      <%= text_field_tag 'usage_mb', params[:usage_mb], :placeholder => 'usage mb...' %><span class="note">default: 2001</span>
+    </div>
+    <div>
+      <%= select :group, :id, AccountGroup.all.collect { |ag| [ ag.name, ag.id ] }, {} %><span class="note">account group</span>
+    </div>
+    <div>
+      <%= select_tag(:pdf, options_for_select([['Display', 0], ['PDF', 1]])) %><span class="note">display or download PDF</span>
+    </div>
+    <div>
+      <%= submit_tag('Generate Tokens', :data => { :disable_with => 'please wait...' }) %>
+    </div>
+  </fieldset>
+<% end %>
