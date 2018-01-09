@@ -1,0 +1,117 @@
+#!/usr/bin/env ruby
+
+# Copyright 2017, Gregory N. Schmit, All rights reserved
+
+# This script prepares a dataplane environment on vlan 2 by building a subnet
+#  172.16.0.1/24, assigning 172.16.0.2 and .3 to policies that provide
+#  unfettered access, and by installing a forward of tcp and udp ports 23232
+#  and 23233 to 172.16.0.3 (the data interface).
+#
+# This all assumes:
+#  - that what the script builds below doesn't already exist.
+#  - that the dataplane is using 172.16.0.2 to communicate out to thexi
+#    controller, and 172.16.0.3 (on port 23232/23233) to tunnel traffic back to
+#    the internal network.
+
+# get rails env, parsing, open3
+require '/space/rxg/console/config/boot_script_environment'
+require 'optparse'
+require 'open3'
+
+# args
+options = {}
+OptionParser.new do |opt|
+  opt.on('-a', '--active-color [COLOR]', 'Active and hover color') {
+    |o| options[:active_color] = o
+  }
+  opt.on('-t', '--text-color [COLOR]', 'Text color') {
+    |o| options[:text_color] = o
+  }
+  opt.on('-b', '--background-color [COLOR]', 'Background color') {
+    |o| options[:background_color] = o
+  }
+  opt.on('-d', '--[no-]delete-screendoor', 'Remove screendoor effect') {
+    |o| options[:delete_screen] = o
+  }
+end.parse!
+target = ARGV.pop
+raise "Need to specify the target..." unless target
+
+# dict
+portal_name = 'portal'
+portal_path = './'
+
+# add class to image so we can limit the height
+find = 'company_logo.png\'), { :action => :index }, { :class => \'\(pbrand-logo \)\{0,1\}uk-navbar-brand uk-hidden-small'
+replace = 'company_logo.png\'), { :action => :index }, { :class => \'pbrand-logo uk-navbar-brand uk-hidden-small'
+output, status = Open3.capture2('sed', 's/' + find + '/' + replace + '/g', 'test.erb')
+if status.success?
+  File.write(portal_path + portal_name + '.erb', output)
+end
+
+# build and add stylesheet
+stylesheet = <<-TXT
+pbrand-logo img {
+  height: 110%;
+  width: auto;
+  margin-top: .3em;
+}
+TXT
+
+if text_color
+  stylesheet += <<-TXT
+.uk-navbar-toggle {
+  color: #{text_color};
+}
+
+ul.rg-navbar-nav li > a {
+  color: #{text_color} !important;
+}
+  TXT
+end
+
+if active_color
+  stylesheet += <<-TXT
+ul.rg-navbar-nav li > a:hover {
+  color: #{active_color};
+}
+
+.rg-navbar-nav > li.uk-active > a {
+  color: #{active_color} !important;
+}
+
+#rg-offcanvas ul > li > a:hover {
+  color: #{active_color};
+}
+  TXT
+end
+
+if text_color
+  stylesheet += <<-TXT
+.uk-navbar-toggle {
+  color: #{text_color};
+}
+
+ul.rg-navbar-nav li > a {
+  color: #{text_color} !important;
+}
+  TXT
+end
+
+if background_color
+  stylesheet += <<-TXT
+.rg-navbar {
+  background-color: #{background_color} !important;
+}
+  TXT
+end
+
+if delete_screen
+  stylesheet += <<-TXT
+.rg-cover-object {
+  background-image: none;
+}
+  TXT
+end
+
+File.write(portal_path + portal_name + '/stylesheets/pbrand.css', stylesheet)
