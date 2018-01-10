@@ -14,7 +14,9 @@ Example: 2-hour trial per month:
 
 In your portal, edit the `views/usage_plan_list.erb` file and add the following if statement:
 
-`<% if @current_account.usage_plan != usage_plan || @current_account.usage_expiration.past? %>`
+```erb
+<% if @current_account.usage_plan != usage_plan || @current_account.usage_expiration.past? %>
+```
 
 (of course, also the `end` tag must be inserted.)
 
@@ -25,8 +27,10 @@ The surrounding code should then look like this:
 
   <% @usage_plans.each do |usage_plan|  %>
 
-    <% if @current_account.usage_plan != usage_plan || @current_account.u
-sage_expiration.past? %>
+    <% if not @current_account or
+          @current_account.usage_plan != usage_plan or
+          usage_plan.name != 'trial' or
+          @current_account.usage_expiration.past? %>
       <div class="uk-width-small-1-1 uk-width-large-1-2">
 
         <%= render :partial => 'usage_plan', :object => usage_plan %>
