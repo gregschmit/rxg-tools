@@ -15,7 +15,10 @@ Example: 2-hour trial per month:
 In your portal, edit the `views/usage_plan_list.erb` file and add the following if statement:
 
 ```erb
-<% if @current_account.usage_plan != usage_plan || @current_account.usage_expiration.past? %>
+<% if not @current_account or
+      @current_account.usage_plan != usage_plan or
+      usage_plan.name != 'trial' or
+      @current_account.usage_expiration.past? %>
 ```
 
 (of course, also the `end` tag must be inserted.)
