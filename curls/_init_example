@@ -2,5 +2,9 @@
 RXG_FQDN='rxg.domain.com'
 RXG_APIKEY='w2O...NGg'
 
+# global options
+#  for example, use '-k' if your rXg doesn't have a valid SSL certificate
+RXG_GLOBALCURLOPTS=''
+
 export RXG_FQDN
 export RXG_APIKEY

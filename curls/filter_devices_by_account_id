@@ -1,0 +1,14 @@
+#!/bin/sh
+
+. ./_init
+
+# args
+if [ $# -ne 1 ]; then
+        printf "Usage: ./filter_devices_by_account_id account_id\n"
+        exit 1
+fi
+
+# get account properties
+account_id=$1
+
+curl ${RXG_GLOBALCURLOPTS} "https://${RXG_FQDN}/admin/scaffolds/devices/index.xml?api_key=${RXG_APIKEY}&account_id=${account_id}"

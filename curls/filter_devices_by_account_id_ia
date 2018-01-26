@@ -1,0 +1,9 @@
+#!/bin/sh
+
+. ./_init
+
+# get account id
+printf 'Enter the account ID to filter by: '
+read account_id
+
+./filter_devices_by_accound_id ${account_id}
