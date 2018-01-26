@@ -4,10 +4,9 @@
 #
 # This script modified an rXg custom portal according to args.
 #
-# Example: 
+# Example:
 
-# get rails env, parsing, open3
-require '/space/rxg/console/config/boot_script_environment'
+# get parsing, open3
 require 'optparse'
 require 'open3'
 
@@ -28,11 +27,15 @@ OptionParser.new do |opt|
   }
 end.parse!
 target = ARGV.pop
-raise "Need to specify the target..." unless target
+raise "Need to specify the target portal..." unless target
 
-# dict
-portal_name = 'portal'
-portal_path = './'
+# var dict
+target = target.chomp('/').rpartition('/')
+portal_path = (target[1].empty? ? '.' : target[0]) + '/'
+portal_name = (target[2] == '.' ? File.basename(Dir.getwd) : target[2])
+
+puts portal_name
+puts portal_
 
 # add class to image so we can limit the height
 find = 'company_logo.png\'), { :action => :index }, { :class => \'\(pbrand-logo \)\{0,1\}uk-navbar-brand uk-hidden-small'
