@@ -11,43 +11,38 @@ require 'optparse'
 require 'open3'
 
 # args
-options = {}
+puts ARGV.join('::')
+active_color = '989898'
+text_color = '989898'
+background_color = '989898'
+delete_screen = false
 OptionParser.new do |opt|
   opt.on('-a', '--active-color [COLOR]', 'Active and hover color') {
-    |o| options[:active_color] = o
+    |o| active_color = o[0] == '#' ? o : '#' + o
   }
   opt.on('-t', '--text-color [COLOR]', 'Text color') {
-    |o| options[:text_color] = o
+    |o| text_color = o[0] == '#' ? o : '#' + o
   }
   opt.on('-b', '--background-color [COLOR]', 'Background color') {
-    |o| options[:background_color] = o
+    |o| background_color = o[0] == '#' ? o : '#' + o
   }
   opt.on('-d', '--[no-]delete-screendoor', 'Remove screendoor effect') {
-    |o| options[:delete_screen] = o
+    |o| delete_screen = o
   }
 end.parse!
+puts ARGV.join('::')
 target = ARGV.pop
 raise "Need to specify the target portal..." unless target
 
 # var dict
 target = target.chomp('/').rpartition('/')
-portal_path = (target[1].empty? ? '.' : target[0]) + '/'
+puts target.join(':')
+portal_path = (target[1].empty? ? '.' + (target[2] == '.' ? '' : '/' + target[2]) : target[0] + '/' + target[2]) + '/'
 portal_name = (target[2] == '.' ? File.basename(Dir.getwd) : target[2])
-
-puts portal_name
-puts portal_
-
-# add class to image so we can limit the height
-find = 'company_logo.png\'), { :action => :index }, { :class => \'\(pbrand-logo \)\{0,1\}uk-navbar-brand uk-hidden-small'
-replace = 'company_logo.png\'), { :action => :index }, { :class => \'pbrand-logo uk-navbar-brand uk-hidden-small'
-output, status = Open3.capture2('sed', 's/' + find + '/' + replace + '/g', 'test.erb')
-if status.success?
-  File.write(portal_path + portal_name + '.erb', output)
-end
 
 # build and add stylesheet
 stylesheet = <<-TXT
-pbrand-logo img {
+.uk-navbar-brand.uk-hidden-small img {
   height: 110%;
   width: auto;
   margin-top: .3em;
@@ -110,4 +105,4 @@ if delete_screen
   TXT
 end
 
-File.write(portal_path + portal_name + '/stylesheets/pbrand.css', stylesheet)
+File.write(portal_path + 'stylesheets/portal_brand.css', stylesheet)

@@ -1,6 +1,6 @@
 # Curls
 
-These are fairly simple shell (`sh`) scripts that primarily use `curl` to interact with the rXg's RESTful API.
+These are fairly simple shell (`sh`) scripts that primarily use `curl` to interact with the rXg's RESTful API (and so can be called from any machine with the requisite environment (see below).
 
 ## Initial Setup
 
@@ -35,7 +35,9 @@ Input arg3: <user input>
 
 ## Environment
 
-These scripts rely on a POSIX(ish) environment. They should run on any Linux or Unix type system. They were developed and run on Ubuntu Linux and OSX/macOS.
+These scripts rely on a POSIX(ish) environment. They should run on any Unix-like system. They were developed and tested on Ubuntu Linux and OSX/macOS.
+
+### Dependencies:
 
 - `sh` - Bourne shell (or `sh`-compatible)
 - `curl`

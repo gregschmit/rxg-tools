@@ -22,6 +22,23 @@ cc_expiration_year="${11}"
 
 # build header and payload
 header="Content-Type: application/xml"
-payload="<?xml version=1.0?><record><active>true</active><account><id>${account_id}</id></account><first_name>${first_name}</first_name><last_name>${last_name}</last_name><address1>${address1}</address1><city>${city}</city><state>${state}</state><zip>${zip}</zip><country>${country}</country><phone>${phone}</phone><cc_number>${cc_number}</cc_number><cc_expiration_month>${cc_expiration_month}</cc_expiration_month><cc_expiration_year>${cc_expiration_year}</cc_expiration_year></record>"
+payload="<?xml version=1.0?>
+<record>
+  <active>true</active>
+  <account>
+    <id>${account_id}</id>
+  </account>
+  <first_name>${first_name}</first_name>
+  <last_name>${last_name}</last_name>
+  <address1>${address1}</address1>
+  <city>${city}</city>
+  <state>${state}</state>
+  <zip>${zip}</zip>
+  <country>${country}</country>
+  <phone>${phone}</phone>
+  <cc_number>${cc_number}</cc_number>
+  <cc_expiration_month>${cc_expiration_month}</cc_expiration_month>
+  <cc_expiration_year>${cc_expiration_year}</cc_expiration_year>
+</record>"
 
 curl ${RXG_CURLOPTS} -X POST -H "${header}" -d "${payload}" "https://${RXG_FQDN}/admin/scaffolds/payment_methods/create.xml?api_key=${RXG_APIKEY}"
