@@ -1,7 +1,5 @@
 #!/usr/bin/env ruby
 
-# Copyright 2017, Gregory N. Schmit, All rights reserved
-#
 # This script modified an rXg custom portal according to args.
 #
 # Example:
