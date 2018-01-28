@@ -1,0 +1,12 @@
+#!/bin/sh
+
+. ./_init
+
+# args
+if [ $# -ne 1 ]; then
+        printf "Usage: ./filter_login_sessions_by_mac mac\n"
+        exit 1
+fi
+mac="$1"
+
+curl ${RXG_CURLOPTS} "https://${RXG_FQDN}/admin/scaffolds/login_sessions/index.xml?api_key=${RXG_APIKEY}&mac=${mac}"
