@@ -7,8 +7,6 @@ if [ $# -ne 5 ]; then
         printf "Usage: ./create_account username first_name last_name email password\n"
         exit 1
 fi
-
-# get account properties
 login="$1"
 first_name="$2"
 last_name="$3"

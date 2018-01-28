@@ -7,8 +7,6 @@ if [ $# -ne 1 ]; then
         printf "Usage: ./show_account_id_from_login login\n"
         exit 1
 fi
-
-# get account properties
 login="$1"
 
 data=`./_get_account_id_from_login ${login}`

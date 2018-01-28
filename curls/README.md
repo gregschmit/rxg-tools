@@ -10,7 +10,7 @@ The other scripts are designed to automatically import the environment defined i
 
 ## Usage
 
-Scripts that begin with "\_" are helpers that generally should only be called from the other scripts.
+Scripts that begin with "\_" are helpers that are called by the other scripts to support the DRY principle.
 
 ### Non-Interactive vs Interactive Scripts
 
@@ -35,8 +35,9 @@ Input arg3: <user input>
 
 ## Environment
 
-These scripts have the following dependancies:
+These scripts rely on a POSIX(ish) environment. They should run on any Linux or Unix type system. They were developed and run on Ubuntu Linux and OSX/macOS.
 
 - `sh` - Bourne shell (or `sh`-compatible)
 - `curl`
 - `sed` - Stream editor
+- `tr`

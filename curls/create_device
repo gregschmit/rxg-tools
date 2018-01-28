@@ -7,8 +7,6 @@ if [ $# -ne 3 ]; then
         printf "Usage: ./create_device name mac account_id\n"
         exit 1
 fi
-
-# get account properties
 name="$1"
 mac="$2"
 account_id="$3"

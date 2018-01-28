@@ -2,7 +2,6 @@
 
 . ./_init
 
-# get account id
 printf 'Enter the account ID to filter by: '
 read account_id
 

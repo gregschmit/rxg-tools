@@ -6,8 +6,6 @@
 if [ $# -ne 1 ]; then
         exit 1
 fi
-
-# get account properties
 login="$1"
 
 data=`curl ${RXG_CURLOPTS} --silent "https://${RXG_FQDN}/admin/scaffolds/accounts/index.xml?api_key=${RXG_APIKEY}&login=${login}" | tr -d '\n\r' | ./_xml_extract_first_id_integer`
