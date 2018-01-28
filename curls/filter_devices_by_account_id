@@ -9,6 +9,6 @@ if [ $# -ne 1 ]; then
 fi
 
 # get account properties
-account_id=$1
+account_id="$1"
 
-curl ${RXG_GLOBALCURLOPTS} "https://${RXG_FQDN}/admin/scaffolds/devices/index.xml?api_key=${RXG_APIKEY}&account_id=${account_id}"
+curl ${RXG_CURLOPTS} "https://${RXG_FQDN}/admin/scaffolds/devices/index.xml?api_key=${RXG_APIKEY}&account_id=${account_id}"

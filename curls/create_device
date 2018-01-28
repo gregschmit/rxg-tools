@@ -1,0 +1,20 @@
+#!/bin/sh
+
+. ./_init
+
+# args
+if [ $# -ne 3 ]; then
+        printf "Usage: ./create_device name mac account_id\n"
+        exit 1
+fi
+
+# get account properties
+name="$1"
+mac="$2"
+account_id="$3"
+
+# build header, payload, scaffold
+header="Content-Type: application/xml"
+payload="<?xml version=1.0?><record><name>${name}</name><mac>${mac}</mac><account><id>${account_id}</id></account></record>"
+
+curl ${RXG_CURLOPTS} -X POST -H "${header}" -d "${payload}" "https://${RXG_FQDN}/admin/scaffolds/devices/create.xml?api_key=${RXG_APIKEY}"

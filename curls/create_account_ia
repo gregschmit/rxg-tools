@@ -14,4 +14,4 @@ read email
 printf 'Enter the password: '
 read password
 
-./create_account ${login} ${first_name} ${last_name} ${email} ${password}
+./create_account "${login}" "${first_name}" "${last_name}" "${email}" "${password}"
