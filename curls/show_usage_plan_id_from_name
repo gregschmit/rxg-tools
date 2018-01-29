@@ -1,0 +1,14 @@
+#!/bin/sh
+
+. ./_init
+
+# args
+if [ $# -ne 1 ]; then
+        printf "Usage: ./show_usage_plan_id_from_name name\n"
+        exit 1
+fi
+name="$1"
+
+data=`./_get_usage_plan_id_from_name "${name}"`
+
+printf "${data}\n"
