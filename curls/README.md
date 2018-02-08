@@ -2,6 +2,8 @@
 
 These are fairly simple shell (`sh`) scripts that primarily use `curl` to interact with the rXg's RESTful API (and so can be called from any machine with the requisite environment (see below).
 
+I use `xml` rather than `json` because when these are run at the terminal, the `xml` output is more readable without the use of any additional tools.
+
 ## Initial Setup
 
 Use `cp` to copy `_init_example` to `_init` and edit the variables inside to match the rXg you want to connect to.
