@@ -1,10 +1,10 @@
 #!/bin/sh
 
-. ./_init
+. ./_init.sh
 
 # args
 if [ $# -ne 1 ]; then
-        printf "Usage: ./filter_devices_by_account_id account_id\n"
+        printf "Usage: ./filter_devices_by_account_id.sh account_id\n"
         exit 1
 fi
 account_id="$1"

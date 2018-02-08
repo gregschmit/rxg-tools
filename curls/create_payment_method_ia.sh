@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. ./_init
+. ./_init.sh
 
 # get account properties
 printf 'Enter the account ID: '
@@ -26,4 +26,4 @@ read cc_expiration_month
 printf 'Enter the 4 digit expiration year: '
 read cc_expiration_year
 
-./create_payment_method "${account_id}" "${first_name}" "${last_name}" "${address1}" "${city}" "${state}" "${zip}" "${phone}" "${cc_number}" "${cc_expiration_month}" "${cc_expiration_year}"
+./create_payment_method.sh "${account_id}" "${first_name}" "${last_name}" "${address1}" "${city}" "${state}" "${zip}" "${phone}" "${cc_number}" "${cc_expiration_month}" "${cc_expiration_year}"

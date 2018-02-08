@@ -1,5 +1,5 @@
 #!/bin/sh
 
-. ./_init
+. ./_init.sh
 
 printf 'End test'

@@ -1,10 +1,10 @@
 #!/bin/sh
 
-. ./_init
+. ./_init.sh
 
 # args
 if [ $# -ne 1 ]; then
-        printf "Usage: ./list_scaffold scaffold\n"
+        printf "Usage: ./list_scaffold.sh scaffold\n"
         exit 1
 fi
 scaffold="$1"

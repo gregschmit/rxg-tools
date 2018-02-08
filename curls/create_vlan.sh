@@ -1,10 +1,10 @@
 #!/bin/sh
 
-. ./_init
+. ./_init.sh
 
 # args
 if [ $# -ne 3 ]; then
-        printf "Usage: ./create_vlan name vlan interface_name\n"
+        printf "Usage: ./create_vlan.sh name vlan interface_name\n"
         exit 1
 fi
 name="$1"
@@ -12,7 +12,7 @@ vlan="$2"
 interface_name="$3"
 
 # get interface id
-interface_id=`./_get_interface_id_from_name ${interface_name}`
+interface_id=`./_get_interface_id_from_name.sh ${interface_name}`
 if [ -z "${interface_id}" ]; then
         printf "Error: no interface found with name %s\n" \
                 "${interface_name}" >&2

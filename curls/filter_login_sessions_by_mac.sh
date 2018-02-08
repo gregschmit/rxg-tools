@@ -1,10 +1,10 @@
 #!/bin/sh
 
-. ./_init
+. ./_init.sh
 
 # args
 if [ $# -ne 1 ]; then
-        printf "Usage: ./filter_login_sessions_by_mac mac\n"
+        printf "Usage: ./filter_login_sessions_by_mac.sh mac\n"
         exit 1
 fi
 mac="$1"

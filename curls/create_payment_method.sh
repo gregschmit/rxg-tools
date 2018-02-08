@@ -1,10 +1,10 @@
 #!/bin/sh
 
-. ./_init
+. ./_init.sh
 
 # args
 if [ $# -ne 11 ]; then
-        printf "Usage: ./create_payment_method account_id first_name last_name address1 city state zip phone cc_number cc_expiration_month cc_expiration_year\n"
+        printf "Usage: ./create_payment_method.sh account_id first_name last_name address1 city state zip phone cc_number cc_expiration_month cc_expiration_year\n"
         exit 1
 fi
 account_id="$1"

@@ -6,9 +6,9 @@ I use `xml` rather than `json` because when these are run at the terminal, the `
 
 ## Initial Setup
 
-Use `cp` to copy `_init_example` to `_init` and edit the variables inside to match the rXg you want to connect to.
+Use `cp` to copy `_init_example.sh` to `_init.sh` and edit the variables inside to match the rXg you want to connect to.
 
-The other scripts are designed to automatically import the environment defined in `_init`.
+The other scripts are designed to automatically import the environment defined in `_init.sh`.
 
 ## Usage
 
@@ -21,14 +21,14 @@ Most of the scripts are non-interactive, however for some of the scripts I have 
 #### Example (non-interactive):
 
 ```sh
-./command arg1 arg2 arg3
+./command.sh arg1 arg2 arg3
 ...
 ```
 
 #### Example (interactive):
 
 ```sh
-./command_ia
+./command_ia.sh
 Enter arg1: <user input>
 Enter arg2: <user input>
 Enter arg3: <user input>
