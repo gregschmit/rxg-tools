@@ -12,7 +12,7 @@ The other scripts are designed to automatically import the environment defined i
 
 ## Usage
 
-Scripts that begin with "\_" are helpers that are called by the other scripts to support the DRY principle.
+Scripts that begin with "\_" are helpers that return output that is formatted to input to other scripts; these are often called by the other scripts to support the DRY principle, however you can use them directly as well.
 
 ### Non-Interactive vs Interactive Scripts
 
