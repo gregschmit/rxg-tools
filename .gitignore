@@ -1,3 +1,5 @@
 default_portal/
 modified_portal/
 dev*
+.DS_Store
+*.swp

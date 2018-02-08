@@ -4,7 +4,7 @@
 
 # args
 if [ $# -ne 3 ]; then
-        printf "Usage: ./create_device.sh name mac account_id\n"
+        printf "Usage: ./create_device.sh name mac account_id\n" >&2
         exit 1
 fi
 name="$1"

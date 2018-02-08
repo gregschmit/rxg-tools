@@ -4,7 +4,7 @@
 
 # args
 if [ $# -ne 1 ]; then
-        printf "Usage: ./filter_login_sessions_by_mac.sh mac\n"
+        printf "Usage: ./filter_login_sessions_by_mac.sh mac\n" >&2
         exit 1
 fi
 mac="$1"

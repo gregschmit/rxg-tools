@@ -4,7 +4,7 @@
 
 # args
 if [ $# -ne 1 ]; then
-        printf "Usage: ./create_policy.sh name\n"
+        printf "Usage: ./create_policy.sh name\n" >&2
         exit 1
 fi
 name="$1"

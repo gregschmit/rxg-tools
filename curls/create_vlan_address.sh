@@ -4,7 +4,7 @@
 
 # args
 if [ $# -ne 5 ]; then
-        printf "Usage: ./create_vlan_address.sh name vlan_id ip netmask autoincrement\n"
+        printf "Usage: ./create_vlan_address.sh name vlan_id ip netmask autoincrement\n" >&2
         exit 1
 fi
 name="$1"

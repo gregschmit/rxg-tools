@@ -4,6 +4,7 @@
 
 # args
 if [ $# -ne 1 ]; then
+        printf "Usage: ./_get_account_id_from_login.sh login\n" >&2
         exit 1
 fi
 login="$1"

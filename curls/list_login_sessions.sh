@@ -4,7 +4,7 @@
 
 # args
 if [ $# -ne 0 ]; then
-        printf "Usage: ./list_login_sessions.sh\n"
+        printf "Usage: ./list_login_sessions.sh\n" >&2
         exit 1
 fi
 

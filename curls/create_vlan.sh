@@ -4,7 +4,7 @@
 
 # args
 if [ $# -ne 3 ]; then
-        printf "Usage: ./create_vlan.sh name vlan interface_name\n"
+        printf "Usage: ./create_vlan.sh name vlan interface_name\n" >&2
         exit 1
 fi
 name="$1"

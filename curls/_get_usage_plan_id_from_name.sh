@@ -4,6 +4,7 @@
 
 # args
 if [ $# -ne 1 ]; then
+        printf "Usage: ./_get_usage_plan_id_from_name.sh name\n" >&2
         exit 1
 fi
 name="$1"

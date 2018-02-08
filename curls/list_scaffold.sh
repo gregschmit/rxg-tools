@@ -4,7 +4,7 @@
 
 # args
 if [ $# -ne 1 ]; then
-        printf "Usage: ./list_scaffold.sh scaffold\n"
+        printf "Usage: ./list_scaffold.sh scaffold\n" >&2
         exit 1
 fi
 scaffold="$1"

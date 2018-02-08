@@ -4,7 +4,7 @@
 
 # args
 if [ $# -ne 2 ]; then
-        printf "Usage: ./charge_account_usage_plan.sh account_id usage_plan_id\n"
+        printf "Usage: ./charge_account_usage_plan.sh account_id usage_plan_id\n" >&2
         exit 1
 fi
 account_id="$1"
