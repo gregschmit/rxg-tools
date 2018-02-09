@@ -13,17 +13,17 @@ policy="$3"
 priority="$4"
 
 # get policy id
-policy_id=`./_get_object_id_from_name.sh policies ${policy}`
+policy_id=`./get_object_id_by_param.sh policies name ${policy}`
 if [ -z "${policy_id}" ]; then
         printf "Error: no policy found with name ${policy}\n" >&2
         exit 1
 fi
 
 # get ip or build it
-ip_id=`./_get_ip_id.sh ${ip_address}`
+ip_id=`./get_object_id_by_param.sh ips ip ${ip_address}`
 if [ -z "${ip_id}" ]; then
         ./create_ip.sh "${ip_address}"
-        ip_id=`./_get_ip_id.sh ${ip_address}`
+        ip_id=`./get_object_id_by_param.sh ips ip ${ip_address}`
         if [ -z "${ip_id}" ]; then
                 printf "Error: ip was not found\n" >&2
                 exit 1

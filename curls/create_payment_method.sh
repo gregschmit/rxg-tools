@@ -4,10 +4,10 @@
 
 # args
 if [ $# -ne 11 ]; then
-        printf "Usage: ./create_payment_method.sh account_id first_name last_name address1 city state zip phone cc_number cc_expiration_month cc_expiration_year\n" >&2
+        printf "Usage: ./create_payment_method.sh account first_name last_name address1 city state zip phone cc_number cc_expiration_month cc_expiration_year\n" >&2
         exit 1
 fi
-account_id="$1"
+account="$1"
 first_name="$2"
 last_name="$3"
 address1="$4"
@@ -19,6 +19,13 @@ phone="$8"
 cc_number="$9"
 cc_expiration_month="${10}"
 cc_expiration_year="${11}"
+
+# get ids
+account_id=`./get_object_id_by_param.sh accounts login ${account}`
+if [ -z "${account_id}" ]; then
+        printf "Error: no account found with name ${account}\n" >&2
+        exit 1
+fi
 
 # build header and payload
 header="Content-Type: application/xml"

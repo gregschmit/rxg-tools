@@ -4,14 +4,21 @@
 
 # args
 if [ $# -ne 5 ]; then
-        printf "Usage: ./create_vlan_address.sh name vlan_id ip netmask autoincrement\n" >&2
+        printf "Usage: ./create_vlan_address.sh name vlan_interface ip netmask autoincrement\n" >&2
         exit 1
 fi
 name="$1"
-vlan_id="$2"
+vlan="$2"
 ip="$3"
 netmask="$4"
 autoincrement="$5"
+
+# get ids
+vlan_id=`./get_object_id_by_param.sh vlans name "${vlan}"`
+if [ -z "${vlan_id}" ]; then
+        printf "Error: no vlan interface found with name ${vlan}\n" >&2
+        exit 1
+fi
 
 # build header and payload
 header="Content-Type: application/xml"

@@ -13,12 +13,12 @@ policy="$3"
 priority="$4"
 
 # get address and policy id
-address_id=`./_get_object_id_from_name.sh addresses ${address}`
+address_id=`./get_object_id_by_param.sh addresses name ${address}`
 if [ -z "${address_id}" ]; then
         printf "Error: no address found with name ${address}\n" >&2
         exit 1
 fi
-policy_id=`./_get_object_id_from_name.sh policies ${policy}`
+policy_id=`./get_object_id_by_param.sh policies name ${policy}`
 if [ -z "${policy_id}" ]; then
         printf "Error: no policy found with name ${policy}\n" >&2
         exit 1
