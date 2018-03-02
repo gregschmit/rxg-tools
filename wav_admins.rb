@@ -29,7 +29,7 @@ ar.save!
 # WAV admins
 admin_and_public_keys.each do |admin, public_key|
   a = Admin.find_or_create_by(login: admin)
-  if not a.password
+  if not a.crypted_password
     pw = (0..20).map {chrs[rand(chrs.length)].chr}.join
     a.password = pw
     a.password_confirmation = pw
