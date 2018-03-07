@@ -1,4 +1,4 @@
-# cURLs
+# cURL Example SDK
 
 These are fairly simple shell (`sh`) scripts that primarily use `curl` to interact with the rXg's RESTful API (and so can be called from any machine with the requisite environment (see below).
 
