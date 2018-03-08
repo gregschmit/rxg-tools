@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
-# This script modified an rXg custom portal according to args.
+# This script modifies an rXg custom portal according to arguments.
 #
-# Example:
+# Example: ./portal_brander.rb -a blue -t white -b dimgrey -d ./some_portal
 
 # get parsing, open3
 require 'optparse'
@@ -10,19 +10,19 @@ require 'open3'
 
 # args
 puts ARGV.join('::')
-active_color = '989898'
-text_color = '989898'
-background_color = '989898'
+active_color = '#989898'
+text_color = '#989898'
+background_color = '#989898'
 delete_screen = false
 OptionParser.new do |opt|
   opt.on('-a', '--active-color [COLOR]', 'Active and hover color') {
-    |o| active_color = o[0] == '#' ? o : '#' + o
+    |o| active_color = o
   }
   opt.on('-t', '--text-color [COLOR]', 'Text color') {
-    |o| text_color = o[0] == '#' ? o : '#' + o
+    |o| text_color = o
   }
   opt.on('-b', '--background-color [COLOR]', 'Background color') {
-    |o| background_color = o[0] == '#' ? o : '#' + o
+    |o| background_color = o
   }
   opt.on('-d', '--[no-]delete-screendoor', 'Remove screendoor effect') {
     |o| delete_screen = o
@@ -36,9 +36,17 @@ raise "Need to specify the target portal..." unless target
 target = target.chomp('/').rpartition('/')
 puts target.join(':')
 portal_path = (target[1].empty? ? '.' + (target[2] == '.' ? '' : '/' + target[2]) : target[0] + '/' + target[2]) + '/'
-portal_name = (target[2] == '.' ? File.basename(Dir.getwd) : target[2])
+portal_name = (target[2] == '.' ? target[0] == '' ? File.basename(Dir.getwd) : File.basename(target[0]) : target[2])
 
-# build and add stylesheet
+# add stylesheet to portal.scss.erb
+csserb = File.read(portal_path + 'stylesheets/portal.scss.erb')
+unless csserb.include? 'portal_brand'
+  csserb = csserb.split("custom portal.\n")
+  csserb = csserb[0] + "custom portal.\n\nPortal Branding Tool\n*= require ./portal_brand\n" + csserb[1]
+  File.write(portal_path + 'stylesheets/portal.scss.erb', csserb)
+end
+
+# build and create stylesheet
 stylesheet = <<-TXT
 .uk-navbar-brand.uk-hidden-small img {
   height: 110%;
