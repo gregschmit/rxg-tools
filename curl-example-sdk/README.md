@@ -14,24 +14,10 @@ The other scripts are designed to automatically import the environment defined i
 
 Scripts that begin with "\_" are helpers that generally should be called from other scripts rather than used directly.
 
-### Non-Interactive vs Interactive Scripts
-
-Most of the scripts are non-interactive, however for some of the scripts I have written an interactive version. The non-interactive version is the "core" script that contains the real functionality and it expects certain parameters to be passed when the script is invoked. The interactive version will end in `_ia`, and it serves as an interactive frontend to the "core" version.
-
-#### Example (non-interactive):
+### Example:
 
 ```sh
 ./command.sh arg1 arg2 arg3
-...
-```
-
-#### Example (interactive):
-
-```sh
-./command_ia.sh
-Enter arg1: <user input>
-Enter arg2: <user input>
-Enter arg3: <user input>
 ...
 ```
 
