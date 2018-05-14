@@ -1,0 +1,47 @@
+$bg: black;
+$link: grey;
+$link-hover: blue;
+$link-hover-bg: green;
+$link-active: $link-hover;
+
+/* fit the logo image */
+.uk-navbar-brand.uk-hidden-small img {
+  height: 110%;
+  width: auto;
+  margin-top: .3em;
+}
+
+/* to disable, set .rg-cover-object background-image to none */
+.disable-rg-cover-object {
+  background-image: none;
+}
+
+/*
+ * color scheme stuff
+ */
+
+#rg-offcanvas ul > li > a,
+ul.rg-navbar-nav li > a {
+  color: $link !important;
+}
+
+.uk-offcanvas-bar {
+  background-color: $bg;
+}
+
+/*.rg-navbar-nav > li.uk-active > a:hover,*/
+#rg-offcanvas ul > li > a:hover,
+.uk-navbar-toggle:focus,
+.uk-navbar-toggle:hover,
+ul.rg-navbar-nav li > a:hover {
+  color: $link-hover !important;
+}
+
+#rg-offcanvas ul > li.uk-active > a,
+.rg-navbar-nav > li.uk-active > a {
+  color: $link-active !important;
+}
+
+.rg-navbar {
+  background-color: $bg !important;
+}
