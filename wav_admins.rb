@@ -39,3 +39,6 @@ admin_and_public_keys.each do |admin, public_key|
   a.ssh_public_key = public_key
   a.save!
 end
+
+
+
