@@ -10,6 +10,9 @@ $link-active: $link-hover;
   width: auto;
   margin-top: .3em;
 }
+.uk-navbar-center { /* logo can be wider on small screens */
+  max-width: 75%;
+}
 
 /* to disable, set .rg-cover-object background-image to none */
 .disable-rg-cover-object {
@@ -20,6 +23,7 @@ $link-active: $link-hover;
  * color scheme stuff
  */
 
+.uk-navbar-toggle,
 #rg-offcanvas ul > li > a,
 ul.rg-navbar-nav li > a {
   color: $link !important;
