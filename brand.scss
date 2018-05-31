@@ -10,8 +10,11 @@ $link-active: $link-hover;
   width: auto;
   margin-top: .3em;
 }
-.uk-navbar-center { /* logo can be wider on small screens */
+.uk-navbar-center {
   max-width: 75%;
+}
+.uk-navbar-center img {
+  max-height: 2.5em;
 }
 
 /* to disable, set .rg-cover-object background-image to none */
