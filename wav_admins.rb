@@ -29,7 +29,7 @@ ar.save!
 admin_and_public_keys.each do |admin, public_key|
   a = Admin.find_or_create_by(login: admin)
   if not a.crypted_password
-    pw = rand(36**16).to_s(36)
+    pw = rand(36**16).to_s(36).rjust(16, '0')
     a.password = pw
     a.password_confirmation = pw
   end
