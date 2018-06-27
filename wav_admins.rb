@@ -5,6 +5,9 @@
 # get rails env
 require '/space/rxg/console/config/boot_script_environment'
 
+# disable paging (for pasting into pry)
+_pry_.config.pager = false
+
 # admin dict
 admin_and_public_keys = {
   'gns': 'ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAizOg1IZjezR22uwK7Qp4Qa1uGxS+y+3ae8hIyzq8u3TpvqbLcbZ/dq+22b+CEOYAWRUhfgM/5ltRdsVCzMEgkvL8w+jLdv7rxRtvHp1XhSjsOKW5pQoiiTetOlOUfNQ+eIPh78kcgHIkg3Z9ISz86mL840e4FWs/wyD2GSvskjEVUT5l6K7gDjJuVMFsEc49A9B6rePpjRDSCwQ3n7/TSwGkA5tsTnt27HvKbz3UQ6mNsg/QZmLVWiWDaMk3vKQEWPn+pbSOkBYXhT6mye05235nyu4f1rvzbd51Ko0ZBhiDoNArhpuF9KRCllip0QpETR1DJd15IB38K0CYE1A4NQ==',

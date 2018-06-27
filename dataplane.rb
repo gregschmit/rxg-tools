@@ -14,6 +14,9 @@
 # get rails env
 require '/space/rxg/console/config/boot_script_environment'
 
+# disable paging (for pasting into pry)
+_pry_.config.pager = false
+
 # dict
 name_prefix = 'vSZ-D'
 local_interface_id = 2
@@ -47,7 +50,7 @@ net = Address.new(
 net.save()
 
 # build vSZ-D-mgmt policy/group
-pm = Policy.new(:name => name_prefix + '-mgmt');0
+pm = Policy.new(:name => name_prefix + '-mgmt')
 pm.save()
 ipm = Ip.new(:ip => mgmt_ip)
 ipm.save()
@@ -60,7 +63,7 @@ ipgm = IpGroup.new(
 ipgm.save()
 
 # build vSZ-D-data policy/group
-pd = Policy.new(:name => name_prefix + '-data');0
+pd = Policy.new(:name => name_prefix + '-data')
 pd.save()
 ipd = Ip.new(:ip => data_ip)
 ipd.save()
