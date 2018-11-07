@@ -8,6 +8,8 @@ We will accomplish this by adding a usage plan which is free and which has a lif
 
 ## The Implementation
 
+Add a `UsagePlan` that is free and that has a lifetime of 24 hours, and that has a limited Quota (e.g., 600 MB).
+
 In your portal, edit the `<portalname>_controller.rb` file and add the following code to the class `Portal::<portalname>Controller`:
 
 ```rb
