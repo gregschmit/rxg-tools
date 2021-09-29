@@ -5,28 +5,6 @@ fqdn_w1 ||= 'lab1-w1.schmit.net'
 wan_cidr ||= '10.255.0.11/24'
 wan_cidr_cc2 ||= '10.255.0.12/24'
 wan_cidr_w1 ||= '10.255.0.13/24'
-license_key ||= <<-BLOCK
-YqaCnJNyHnOpbEORLN1sZa1COVEj5GPbYYIMkfDwFy/tciiGcLond0wg+GFz
-nh4DAfLrstF1SW5hD1LFuMkpi49vnaMasRNSGacjjrT1PbH+TKYIDPO9aiWw
-jPTpDb1WDkfZeAlqXWz976T6C4U6/LgIEdBWx+h8/rSZ6Rb4rn31irktwARY
-nf784LtB3SEC/p+uuylpghL9z7kFAfkWOEqgHo/xrivnDgIZnAZML0TMvJur
-AnWVvFJukGjtAUgDNpuOhee2NUavaioEMhT8y7tZQ4QVBai691VYez2fO9bf
-GDer+QTTri6Y+NaX8HXULOspQdg0fXqP785jpVX+NHP8DwuSC37DEWp5QHRo
-3dCV1/ceJA+M0W7VckUxuSutr0M8CwCk6GjLLUNKBPzJ6rPPBWKm5Y86727t
-TrNjn+r4rkHqYGsgEPk+hXyFuc82fPX+la089yQXrpeu6v2ZWYUvszsJqqSZ
-68M3gJvOdGq1KNvEJl44H1QCTHxUAdevShJ5ipO2DRM8/HaBI4Ef30fkWKDV
-BiSRsU3n4Tx/FS7wVAHhsXqzfl6snD3XarmeD1vxmOQDp6baUWnMc424+qZK
-wxxlgDjXh1VflDBkWOCcq0dnQI3ihlBipErK8KDUJsb7dMCCJjEUG7AbG68f
-dBG5mC4JMpOLGUSawfOqt5DsYZWM5oWyxUmhDe8k7TZcRAqib3dShlE/yB3W
-EgXO6YQIfs51CiwAUxPecdDAve86SFQhtuO2R3sH4iZkd8PHmr0V9Xz6thz6
-Zq0PziVXIxUtLuE/8zvVqnsUSKqqHcym/Eu8ta+UPxRuShK/ExkS2fenL5+a
-n8ALfX++xVhQ6g4G1Uu6CiBPZQTxmqZofDgOzJOhpI1d+6Ck6OF8F7hcyXia
-VsL1rxsNikcTHaM42lDcAozixAHQ1jdPP2PXo1q4bGfKd7wYeLfhcxswOJu4
-SIRqeFlxPz2yHsk4ip+TXKN5ov2Hhia/XN5XTcyLltMjvZl2U/xsjicxs52h
-oe1IRj9sQjQI/DBVm90KO6rymLzqdu43S7kIXK/px2gpQBs/0EQraV2vMMFb
-iH3YHCYEjpvpQ5SF3jyh3Oco/5VfBsMf/xP/GeKASVajAouonyAg1l27biX8
-4K9NqNmH4nRIV4CLXE0oQBWf43ITMmTPZg==
-BLOCK
 %>
 
 <%= ConfigTemplate.include_file('02a_symmetric_cluster_controller_(master).yml.erb', context: binding) %>
