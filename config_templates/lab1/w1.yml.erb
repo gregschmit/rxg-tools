@@ -1,27 +1,5 @@
 <%
 wan_cidr ||= '10.255.0.13/24'
-license_key ||= <<-BLOCK
-gzvM1VIfmtAK/3XhUVpiz0mXMsGFIu3OwNMov7xC2tm8NwSswjzTlTSblzVy
-fQwIINlNdSlqYntDENDW+xqMGzZqkqI93WkYf7Y0jtRPgjduf8q02mt8+D61
-VhBwb2JhEA2j5y5VPUH4lIw8H/mz9PaFZiGly9mMiJYV5bleF7Ve42V2SgFB
-HZwbsiBKg0Uaq91W/7rKXjoclO+cKIa4x2+vLJJJFP+h6WAzA3H4D0Clm+T+
-3no8YlW+9ezi1WRjMZh2Xhzb29jAEVouLlUlsbYCgRs1PiZ6xmgef+3lb81G
-pIv1BwxOohvfI0hMCmkWWQiF5npyRxLFnemHOBgef8flxgxFcg11RtL8kuca
-tEWIRNd5rFqYfYMO9hUez/Jrnb8KgVBC5NOzIdDBmP50d5G9N11sxW+POznu
-rHmkRo8mzMiQXG9Kf8vw5nN9LmMz8Iv31pqTHvljWerppob2PpXFd9kK/g6S
-9lge3PbryATcLRCWAM1PxTsPrIiA8O7CXyRkgP94HKVu+HNZWhsAvZ099XKB
-w0RHxDaF6cieRAXTnnKKFBYpemKfdTUOegrMjdpgN4g2gyDqwmc6xR9r4HmD
-6ZEf5osGmF2P2xjVAHoFTKBdgmRvSy5WCkeZIcT+hkK1u0eFixx4TUG8AHKa
-sJtOz34tC8qpOPLNL7JV5N5AhT0WQHjjjl8OVE4Jy4uLYdN3V7q4s4rmJRbe
-DQ6hjBeR9z2KUUVMnKnkcJqqaewS3hdrV5JA+JXVWFs48cDCCL0OPJ/s+xNe
-/JMk/bqhk/ZvZqVA4Uyn/88NEjojtFbJTkyCXzH3eS5i7N26ubxMvzdHKWVz
-wYGwi3YmGFlN5umvwPYw7L61SS6oekL+J5xTY2rFFebsFoUcZXGs2fP0uGSY
-NEZMwNxHnDMRDKD7kNGSP8qMkjskDe1L9If71FQTsa2PD98cYivd3RnsSlbE
-XoKAi4uMSZapO9e3NbvO0Nql8gbn9ElGbhbyOH4yKfZqVbi2UiDgq9Mdghs4
-Hunuwn5nkEgWCn0MfeLzek5umbaHAGawt0hQUY9FIMpDEaxnil9z3C3+r8/l
-+//XnAIi5ycBu4AjcpItpEe/gqs9u0IK8lfvIKWfT7LUWJV293vdPdKj1nuu
-aMTHfK+bgCMfDJmNpagM2bhh3wHhHn7VRw==
-BLOCK
 %>
 
-<%= ConfigTemplate.include_file('02c_symmetric_cluster_witness.yml.erb', context: binding) %>
+<%= ConfigTemplate.include(file: '02c_symmetric_cluster_witness.yml.erb', context: binding) %>
