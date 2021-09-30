@@ -2,4 +2,4 @@
 wan_cidr ||= '10.255.0.12/24'
 %>
 
-<%= ConfigTemplate.include_file('02b_symmetric_cluster_controller_(standby).yml.erb', context: binding) %>
+<%= ConfigTemplate.include(file: '02b_symmetric_cluster_controller_(standby).yml.erb', context: binding) %>
