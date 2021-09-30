@@ -1,10 +1,8 @@
 <%
 fqdn ||= 'lab1-cc1.schmit.net'
 fqdn_cc2 ||= 'lab1-cc2.schmit.net'
-fqdn_w1 ||= 'lab1-w1.schmit.net'
 wan_cidr ||= '10.255.0.11/24'
 wan_cidr_cc2 ||= '10.255.0.12/24'
-wan_cidr_w1 ||= '10.255.0.13/24'
 %>
 
 <%= ConfigTemplate.include_template(file: '02a_symmetric_cluster_controller_(master).yml.erb', context: binding) %>
