@@ -7,4 +7,4 @@ wan_cidr_cc2 ||= '10.255.0.12/24'
 wan_cidr_w1 ||= '10.255.0.13/24'
 %>
 
-<%= ConfigTemplate.include(file: '02a_symmetric_cluster_controller_(master).yml.erb', context: binding) %>
+<%= ConfigTemplate.include_template(file: '02a_symmetric_cluster_controller_(master).yml.erb', context: binding) %>
