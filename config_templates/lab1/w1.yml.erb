@@ -1,5 +1,0 @@
-<%
-wan_cidr ||= '10.255.0.13/24'
-%>
-
-<%= ConfigTemplate.include(file: '02c_symmetric_cluster_witness.yml.erb', context: binding) %>
