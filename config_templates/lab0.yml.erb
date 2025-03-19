@@ -1,0 +1,6 @@
+<%
+fqdn ||= 'lab0.schmit.net'
+wan_cidr ||= '10.255.0.30/24'
+%>
+
+<%= ConfigTemplate.include_template(file: '01_initial.yml.erb', context: binding) %>
