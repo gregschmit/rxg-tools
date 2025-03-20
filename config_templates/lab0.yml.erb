@@ -4,3 +4,11 @@ wan_cidr ||= '10.255.0.30/24'
 %>
 
 <%= ConfigTemplate.include_template(file: '01_initial.yml.erb', context: binding) %>
+
+- addresses:
+  - name: Management LAN
+    cidr: 10.10.10.1/24
+- dhcp_pools:
+  - name: Management LAN
+    start_ip: 10.10.10.100
+    end_ip: 10.10.10.254
