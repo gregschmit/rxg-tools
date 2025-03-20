@@ -1,9 +1,13 @@
 <%
-fqdn ||= 'lab0.schmit.net'
-wan_cidr ||= '10.255.0.30/24'
+fqdn ||= "lab0.schmit.net"
+wan_cidr ||= "199.27.253.44/29"
 %>
 
-<%= ConfigTemplate.include_template(file: '01_initial.yml.erb', context: binding) %>
+<%= ConfigTemplate.include_template(file: "01_initial.yml.erb", context: binding) %>
+
+- admins:
+  - login: testadmin
+    _delete: true
 
 - addresses:
   - name: Management LAN
@@ -12,3 +16,20 @@ wan_cidr ||= '10.255.0.30/24'
   - name: Management LAN
     start_ip: 10.10.10.100
     end_ip: 10.10.10.254
+
+- subnets_filters:
+  - name: Block Subnets
+    _delete: true
+
+- net_app_filters:
+  - name: Webserver DDoS Abusers Block All
+    _delete: true
+- ip_groups:
+  - name: Webserver DDoS Abusers
+    _delete: true
+- policies:
+  - name: Webserver DDoS Abusers
+    _delete: true
+- log_hits_triggers:
+  - name: Webserver DDoS Prevention
+    _delete: true
