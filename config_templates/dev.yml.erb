@@ -1,23 +1,26 @@
 <%
 fqdn = "dev.schmit.net"
 wan_cidr = "199.27.253.44/29"
+random_password = [*("a".."z"), *("A".."Z"), *("0".."9")].sample(30).join
 %>
 
 <%= ConfigTemplate.include_template(file: "01_initial.yml.erb", context: binding) %>
 
 - admins:
   - login: testadmin
-    _delete: true
+    password: "<%= random_password %>"
+    password_confirmation: "<%= random_password %>"
 
 - ssl_key_chains:
   - name: <%= fqdn %>
     certificate_signing_request:
       name: <%= fqdn %> CSR
-      common_name: <%= fqdn %>
       sign_mode: certbot
+      common_name: <%= fqdn %>
+      extended_key_usage: server
       country: US
       state: Illinois
-      locality: Oswego
+      locale: Oswego
       email_address: gns@rgnets.com
 
 - subnets_filters:
