@@ -1,15 +1,24 @@
 <%
-fqdn ||= "dev.schmit.net"
-wan_cidr ||= "199.27.253.44/29"
-random_password = [*("a".."z"), *("A".."Z"), *("0".."9")].sample(30).join
+fqdn = "dev.schmit.net"
+wan_cidr = "199.27.253.44/29"
 %>
 
 <%= ConfigTemplate.include_template(file: "01_initial.yml.erb", context: binding) %>
 
 - admins:
   - login: testadmin
-    password: "<%= random_password %>"
-    password_confirmation: "<%= random_password %>"
+    _delete: true
+
+- ssl_key_chains:
+  - name: <%= fqdn %>
+    certificate_signing_request:
+      name: <%= fqdn %> CSR
+      common_name: <%= fqdn %>
+      sign_mode: certbot
+      country: US
+      state: Illinois
+      locality: Oswego
+      email_address: gns@rgnets.com
 
 - subnets_filters:
   - name: Block Subnets
