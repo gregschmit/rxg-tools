@@ -1,8 +1,31 @@
 <%
-fqdn ||= 'lab1-cc1.schmit.net'
-fqdn_cc2 ||= 'lab1-cc2.schmit.net'
-wan_cidr ||= '10.255.0.11/24'
-wan_cidr_cc2 ||= '10.255.0.12/24'
+fqdn ||= "lab1-cc1.schmit.net"
+fqdn_cc2 ||= "lab1-cc2.schmit.net"
+wan_cidr ||= "10.255.0.31/24"
+wan_cidr_cc2 ||= "10.255.0.32/24"
+random_password = [*("a".."z"), *("A".."Z"), *("0".."9")].sample(30).join
 %>
 
-<%= ConfigTemplate.include_template(file: '02a_symmetric_cluster_controller_(master).yml.erb', context: binding) %>
+<%= ConfigTemplate.include_template(file: "02a_symmetric_cluster_controller_(master).yml.erb", context: binding) %>
+
+- admins:
+  - login: testadmin
+    password: "<%= random_password %>"
+    password_confirmation: "<%= random_password %>"
+
+- subnets_filters:
+  - name: Block Subnets
+    _delete: true
+
+- net_app_filters:
+  - name: Webserver DDoS Abusers Block All
+    _delete: true
+- ip_groups:
+  - name: Webserver DDoS Abusers
+    _delete: true
+- policies:
+  - name: Webserver DDoS Abusers
+    _delete: true
+- log_hits_triggers:
+  - name: Webserver DDoS Prevention
+    _delete: true
