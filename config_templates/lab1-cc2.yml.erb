@@ -1,6 +1,8 @@
 <%
 wan_interface = "vtnet0"
 wan_cidr = "10.255.0.42/24"
+
+cin_interface ||= "vtnet1"
 %>
 
 <%= ConfigTemplate.include_template(file: "02b_symmetric_cluster_controller_(standby).yml.erb", context: binding) %>

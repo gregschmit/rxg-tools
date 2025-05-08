@@ -1,9 +1,13 @@
 <%
 fqdn = "lab1-cc1.schmit.net"
 fqdn_cc2 = "lab1-cc2.schmit.net"
+
 wan_interface = "vtnet0"
 wan_cidr = "10.255.0.41/24"
 wan_cidr_cc2 = "10.255.0.42/24"
+
+cin_interface ||= "vtnet1"
+
 random_password = [*("a".."z"), *("A".."Z"), *("0".."9")].sample(30).join
 %>
 
