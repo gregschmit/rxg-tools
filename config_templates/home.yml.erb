@@ -1,0 +1,131 @@
+<%
+fqdn = "home.schmit.net"
+wan_interface = 'em0'
+wan_cidr = "199.27.253.42/29"
+wan_speed_mbps = 1000
+random_password = [*("a".."z"), *("A".."Z"), *("0".."9")].sample(30).join
+%>
+
+<%= ConfigTemplate.include_template(file: "01_initial.yml.erb", context: binding) %>
+
+- admins:
+  - login: testadmin
+    password: "<%= random_password %>"
+    password_confirmation: "<%= random_password %>"
+
+- ssl_key_chains:
+  - name: <%= fqdn %>
+    certificate_signing_request:
+      name: <%= fqdn %> CSR
+      sign_mode: certbot
+      common_name: <%= fqdn %>
+      extended_key_usage: server
+      country: US
+      state: Illinois
+      locale: Oswego
+      email_address: gns@rgnets.com
+
+- subnets_filters:
+  - name: Block Subnets
+    _delete: true
+
+- net_app_filters:
+  - name: Webserver DDoS Abusers Block All
+    _delete: true
+- ip_groups:
+  - name: Webserver DDoS Abusers
+    _delete: true
+- policies:
+  - name: Webserver DDoS Abusers
+    _delete: true
+- log_hits_triggers:
+  - name: Webserver DDoS Prevention
+    _delete: true
+
+- addresses:
+  - name: Management LAN
+    _delete: true
+  - name: LAN Primary
+    primary: true
+    cidr: 10.255.0.1/24
+    interface: em3
+- dhcp_pools:
+  - name: Management LAN
+    _delete: true
+  - name: LAN Primary
+    start_ip: 10.255.0.100
+    end_ip: 10.255.0.254
+- dhcp_options:
+  - name: Greg's Github Config Templates
+    option_name: tftp-server-name
+    option_value: https://raw.githubusercontent.com/gregschmit/rxg-tools/master/config_templates
+- dhcp_fixed_hosts:
+  - name: lab0.schmit.net
+    ip: 10.255.0.30
+    mac: bc:24:11:02:ab:20
+    dhcp_option_group:
+      name: lab0.schmit.net
+      authoritative: true
+      dhcp_options:
+      - Global min-lease-time
+      - Global max-lease-time
+      - Global default-lease-time
+      - Greg's Github Config Templates
+      - name: lab0.schmit.net
+        option_name: bootfile-name
+        option_value: lab0.yml.erb
+  - name: dev.schmit.net
+    ip: 10.255.0.31
+    mac: bc:24:11:17:63:96
+    dhcp_option_group:
+      name: dev.schmit.net
+      authoritative: true
+      dhcp_options:
+      - Global min-lease-time
+      - Global max-lease-time
+      - Global default-lease-time
+      - Greg's Github Config Templates
+      - name: dev.schmit.net
+        option_name: bootfile-name
+        option_value: dev.yml.erb
+  - name: lab1-cc1.schmit.net
+    ip: 10.255.0.41
+    mac: bc:24:11:c3:6b:f9
+    dhcp_option_group:
+      name: lab1-cc1.schmit.net
+      authoritative: true
+      dhcp_options:
+      - Global min-lease-time
+      - Global max-lease-time
+      - Global default-lease-time
+      - Greg's Github Config Templates
+      - name: lab1-cc1.schmit.net
+        option_name: bootfile-name
+        option_value: lab1-cc1.yml.erb
+  - name: lab1-cc2.schmit.net
+    ip: 10.255.0.42
+    mac: bc:24:11:4b:3f:22
+    dhcp_option_group:
+      name: lab1-cc2.schmit.net
+      authoritative: true
+      dhcp_options:
+      - Global min-lease-time
+      - Global max-lease-time
+      - Global default-lease-time
+      - Greg's Github Config Templates
+      - name: lab1-cc2.schmit.net
+        option_name: bootfile-name
+        option_value: lab1-cc2.yml.erb
+
+# Create these certificates and use CloudFlare Global Origin Certificate.
+- http_virtual_hosts:
+  - name: gregschmit.com
+    virtual_host_name: gregschmit.com
+    proxy_target: app1.schmit.net
+    proxy_port: '80'
+    # ssl_key_chain: gregschmit.com
+  - name: rails-rest-framework.com
+    virtual_host_name: rails-rest-framework.com
+    proxy_target: app0.schmit.net
+    proxy_port: '80'
+    # ssl_key_chain: rails-rest-framework.com
