@@ -1,6 +1,7 @@
 <%
 fqdn = "lab0.schmit.net"
-wan_cidr = "199.27.253.45/29"
+wan_cidr = "96.74.246.204/29"
+wan_gateway = "96.74.246.206"
 random_password = [*("a".."z"), *("A".."Z"), *("0".."9")].sample(30).join
 %>
 
@@ -18,13 +19,6 @@ random_password = [*("a".."z"), *("A".."Z"), *("0".."9")].sample(30).join
   - name: Management LAN
     start_ip: 10.10.10.100
     end_ip: 10.10.10.254
-
-- http_virtual_hosts:
-  - name: vSZ
-    virtual_host_name: lab0-vsz-ext.schmit.net
-    proxy_target: 10.10.10.2
-    proxy_port: 8443
-    enable_ssl: true
 
 - subnets_filters:
   - name: Block Subnets
