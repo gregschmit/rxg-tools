@@ -1,15 +1,14 @@
 <%
 fqdn = "dev.schmit.net"
-wan_cidr = "199.27.253.44/29"
-random_password = [*("a".."z"), *("A".."Z"), *("0".."9")].sample(30).join
+wan_cidr = "96.74.246.203/29"
+wan_gateway = "96.74.246.206"
 %>
 
 <%= ConfigTemplate.include_template(file: "01_initial.yml.erb", context: binding) %>
 
 - admins:
   - login: testadmin
-    password: "<%= random_password %>"
-    password_confirmation: "<%= random_password %>"
+    _delete: true
 
 - ssl_key_chains:
   - name: <%= fqdn %>
