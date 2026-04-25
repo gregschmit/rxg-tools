@@ -12,6 +12,18 @@ random_password = [*("a".."z"), *("A".."Z"), *("0".."9")].sample(30).join
     password: "<%= random_password %>"
     password_confirmation: "<%= random_password %>"
 
+- ssl_key_chains:
+  - name: <%= fqdn %>
+    certificate_signing_request:
+      name: <%= fqdn %> CSR
+      sign_mode: certbot
+      common_name: <%= fqdn %>
+      extended_key_usage: server
+      country: US
+      state: Illinois
+      locale: Oswego
+      email_address: gns@rgnets.com
+
 - addresses:
   - name: Management LAN
     cidr: 10.10.10.1/24
